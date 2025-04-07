@@ -34,7 +34,7 @@ router.get("/:id", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
-});
+}); 
 
 // Delete Product (Admin Only)
 // router.delete("/:id", authMiddleware, async (req, res) => {

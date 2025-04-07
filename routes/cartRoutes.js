@@ -17,7 +17,7 @@ const router = express.Router();
 //     const itemIndex = cart.items.findIndex((item) => item.productId.toString() === productId);
 
 //     if (itemIndex > -1) {
-//       cart.items[itemIndex].quantity += quantity;
+//       cart.items[itemIndex].quantity += quantity; 
 //     } else {
 //       cart.items.push({ productId, quantity });
 //     }

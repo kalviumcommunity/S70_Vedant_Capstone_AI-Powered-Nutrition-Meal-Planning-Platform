@@ -40,7 +40,7 @@
 // // Verify Payment Signature
 // router.post("/verify", authMiddleware, async (req, res) => {
 //   try {
-//     const { orderId, paymentId, signature } = req.body;
+//     const { orderId, paymentId, signature } = req.body; 
 
 //     const generatedSignature = crypto
 //       .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)

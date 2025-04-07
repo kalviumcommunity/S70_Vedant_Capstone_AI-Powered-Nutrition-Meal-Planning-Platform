@@ -21,7 +21,7 @@ const router = express.Router();
 //   } catch (error) {
 //     res.status(500).json({ message: "Server error", error });
 //   }
-// });
+// }); 
 
 // Get User Orders
 router.get("/", authMiddleware, async (req, res) => {

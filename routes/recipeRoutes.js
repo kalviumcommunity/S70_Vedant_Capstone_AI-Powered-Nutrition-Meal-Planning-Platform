@@ -9,7 +9,7 @@ const router = express.Router();
 // router.post("/generate", authMiddleware, async (req, res) => {
 //   try {
 //     const { dietPreference, calorieGoal } = req.body;
-
+ 
 //     // Call AI function to generate meal plan
 //     const aiResponse = await generateMealPlan(dietPreference, calorieGoal);
 

@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to SmartBites Backend!");
 });
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI; 
 
 if (!MONGO_URI) {
   console.error("MONGO_URI is missing! Check your .env file.");

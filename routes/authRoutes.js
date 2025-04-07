@@ -13,7 +13,7 @@
 //     let user = await User.findOne({ email });
 //     if (user) return res.status(400).json({ message: "User already exists" });
 
-//     // Create new user
+//     // Create new user 
 //     user = new User({ name, email, password });
 //     await user.save();
 
