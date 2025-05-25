@@ -23,50 +23,50 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
-// // Get all orders for a user
-// router.get('/', auth, async (req, res) => {
-//   try {
-//     const { status, sort = 'createdAt', limit = 10, page = 1 } = req.query;
-//     const skip = (page - 1) * limit;
+// Get all orders for a user
+router.get('/', auth, async (req, res) => {
+  try {
+    const { status, sort = 'createdAt', limit = 10, page = 1 } = req.query;
+    const skip = (page - 1) * limit;
 
-//     const query = { user: req.userId };
-//     if (status) query.status = status;
+    const query = { user: req.userId };
+    if (status) query.status = status;
 
-//     const orders = await Order.find(query)
-//       .sort({ [sort]: -1 })
-//       .limit(Number(limit))
-//       .skip(skip);
+    const orders = await Order.find(query)
+      .sort({ [sort]: -1 })
+      .limit(Number(limit))
+      .skip(skip);
 
-//     const total = await Order.countDocuments(query);
+    const total = await Order.countDocuments(query);
 
-//     res.json({
-//       orders,
-//       total,
-//       pages: Math.ceil(total / limit),
-//       currentPage: page
-//     });
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
+    res.json({
+      orders,
+      total,
+      pages: Math.ceil(total / limit),
+      currentPage: page
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
-// // Get single order
-// router.get('/:orderId', auth, async (req, res) => {
-//   try {
-//     const order = await Order.findOne({
-//       _id: req.params.orderId,
-//       user: req.userId
-//     });
+// Get single order
+router.get('/:orderId', auth, async (req, res) => {
+  try {
+    const order = await Order.findOne({
+      _id: req.params.orderId,
+      user: req.userId
+    });
     
-//     if (!order) {
-//       return res.status(404).json({ message: 'Order not found' });
-//     }
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
 
-//     res.json(order);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
+    res.json(order);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 // // Update order
 // router.put('/:orderId', auth, async (req, res) => {
