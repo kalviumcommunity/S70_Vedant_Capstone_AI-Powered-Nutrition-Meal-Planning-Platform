@@ -20,11 +20,11 @@ const userSchema = new mongoose.Schema({
   },
   savedRecipes: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Recipe'
+    ref: 'Recipe' 
   }],
   orders: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Order'
+    ref: 'Order' 
   }],
   mealPlans: [{
     type: mongoose.Schema.Types.ObjectId,
