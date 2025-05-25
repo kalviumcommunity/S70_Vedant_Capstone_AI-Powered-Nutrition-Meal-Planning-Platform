@@ -68,66 +68,66 @@ router.get('/:orderId', auth, async (req, res) => {
   }
 });
 
-// // Update order
-// router.put('/:orderId', auth, async (req, res) => {
-//   try {
-//     const order = await Order.findOneAndUpdate(
-//       { _id: req.params.orderId, user: req.userId },
-//       { ...req.body },
-//       { new: true, runValidators: true }
-//     );
+// Update order
+router.put('/:orderId', auth, async (req, res) => {
+  try {
+    const order = await Order.findOneAndUpdate(
+      { _id: req.params.orderId, user: req.userId },
+      { ...req.body },
+      { new: true, runValidators: true }
+    );
     
-//     if (!order) {
-//       return res.status(404).json({ message: 'Order not found' });
-//     }
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
 
-//     res.json(order);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
+    res.json(order);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
-// // Cancel order
-// router.patch('/:orderId/cancel', auth, async (req, res) => {
-//   try {
-//     const order = await Order.findOne({
-//       _id: req.params.orderId,
-//       user: req.userId
-//     });
+// Cancel order
+router.patch('/:orderId/cancel', auth, async (req, res) => {
+  try {
+    const order = await Order.findOne({
+      _id: req.params.orderId,
+      user: req.userId
+    });
     
-//     if (!order) {
-//       return res.status(404).json({ message: 'Order not found' });
-//     }
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
 
-//     if (order.status !== 'processing') {
-//       return res.status(400).json({ message: 'Order cannot be cancelled' });
-//     }
+    if (order.status !== 'processing') {
+      return res.status(400).json({ message: 'Order cannot be cancelled' });
+    }
 
-//     order.status = 'cancelled';
-//     await order.save();
+    order.status = 'cancelled';
+    await order.save();
     
-//     res.json(order);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
+    res.json(order);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
-// // Delete order
-// router.delete('/:orderId', auth, async (req, res) => {
-//   try {
-//     const order = await Order.findOneAndDelete({
-//       _id: req.params.orderId,
-//       user: req.userId
-//     });
+// Delete order
+router.delete('/:orderId', auth, async (req, res) => {
+  try {
+    const order = await Order.findOneAndDelete({
+      _id: req.params.orderId,
+      user: req.userId
+    });
     
-//     if (!order) {
-//       return res.status(404).json({ message: 'Order not found' });
-//     }
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
 
-//     res.json({ message: 'Order deleted successfully' });
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
+    res.json({ message: 'Order deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 export default router;
